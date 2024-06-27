@@ -10,42 +10,36 @@ public class Car {
 
   //constructor
   public Car(String brand, String licensePlate, double tankSize, double fuelConsumption) {
-      this.brand = brand;
-      this.licensePlate = licensePlate;
-      this.tankSize = tankSize;
-      this.fuelConsumption = fuelConsumption;
-      //for calculating currentTankPosition
-      //for calculating currentTankPosition
-      double fuelUsed = distanceDriven / fuelConsumption;
-      if (fuelUsed > tankSize) {
-        fuelUsed = tankSize;
-      }
-      this.currentTankPosition = ((tankSize - fuelUsed) / tankSize ) * 100;
-      this.distanceDriven = 0;
+    this.brand = brand;
+    this.licensePlate = licensePlate;
+    this.tankSize = tankSize;
+    this.fuelConsumption = fuelConsumption;
+    this.distanceDriven = 0;
+    this.currentTankPosition = (tankSize / tankSize * 1.0 ) * 100;
   }
 
   //methods
   public void drive(int km) {
       double fuelUsed = km / fuelConsumption;
-      double currentFuel = currentTankPosition * tankSize;
+      double currentFuel = currentTankPosition/100 * tankSize;
       if (fuelUsed > currentFuel) {
         System.out.println("The car can't drive that far!");
         return;
       }
       currentFuel -= fuelUsed;
-      this.currentTankPosition = currentFuel / tankSize;
+      this.currentTankPosition = (currentFuel / tankSize) * 100;
       this.distanceDriven += km;
     System.out.println("You drove " + km + " km");
   }
   public void fuel(int litres){
-    double currentFuel = currentTankPosition * tankSize;
+    double currentFuel = currentTankPosition/100 * tankSize;
     currentFuel += litres;
     if (currentFuel > tankSize) {
       currentFuel = tankSize;
       System.out.println("You cannot overfill the tank!");
       return;
     }
-    this.currentTankPosition = currentFuel / tankSize;
+    this.currentTankPosition = (currentFuel / tankSize) * 100;
     System.out.println("You filled the tank with " + litres + " litres");
   }
 
