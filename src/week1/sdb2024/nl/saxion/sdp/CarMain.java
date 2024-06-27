@@ -4,7 +4,7 @@ import week1.sdb2024.nl.saxion.sdp.exercises.Car;
 
 import java.util.Scanner;
 
-public class Main {
+public class CarMain {
   public static void main(String[] args) {
     Car car = new Car("Toyota", "12-AB-CD", 50, 1);
     Scanner scanner = new Scanner(System.in);
